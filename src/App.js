@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import ColorScheme from './components/colorScheme';
+import Navbar from './components/navbar';
 
 function App() {
   const [scheme, setScheme] = React.useState([
@@ -10,7 +11,7 @@ function App() {
     [97, 142, 111],
     [48, 138, 109],
   ]);
-  function colormind() {
+  function getSchemes() {
     var url = 'http://colormind.io/api/';
 
     (async () => {
@@ -29,10 +30,8 @@ function App() {
 
   return (
     <div className='App'>
+      <Navbar onGetScheme={getSchemes} />
       <ColorScheme scheme={scheme} />
-      <button className='GenerateBtn' onClick={colormind}>
-        Generate
-      </button>
     </div>
   );
 }
