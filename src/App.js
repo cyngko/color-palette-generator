@@ -2,15 +2,18 @@ import React from 'react';
 import './App.css';
 import ColorScheme from './components/colorScheme';
 import Navbar from './components/navbar';
+import Controlbar from './components/controlBar';
 
-function App() {
+function App({ onHandleSpaceBar }) {
   const [scheme, setScheme] = React.useState([
-    [211, 38, 67],
-    [250, 72, 31],
-    [214, 170, 50],
-    [97, 142, 111],
-    [48, 138, 109],
+    [188, 182, 255],
+    [184, 225, 255],
+    [169, 255, 247],
+    [148, 251, 171],
+    [130, 171, 161],
   ]);
+  const [mode, setMode] = React.useState('light');
+
   function getSchemes() {
     var url = 'http://colormind.io/api/';
 
@@ -28,9 +31,19 @@ function App() {
     })();
   }
 
+  function toggleClass() {
+    const baseClass = 'App ';
+    const classList = baseClass + (mode === 'light' ? 'light' : 'dark');
+    return classList;
+  }
+  function handleToggle() {
+    const newMode = mode === 'light' ? 'dark' : 'light';
+    setMode(newMode);
+  }
   return (
-    <div className='App'>
-      <Navbar onGetScheme={getSchemes} />
+    <div className={toggleClass()}>
+      <Navbar onGetScheme={getSchemes} mode={mode} onToggle={handleToggle} />
+      <Controlbar onGetScheme={getSchemes} />
       <ColorScheme scheme={scheme} />
     </div>
   );
