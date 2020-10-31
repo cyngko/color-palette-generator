@@ -11,7 +11,10 @@ export default function Navbar({ onGetScheme, mode, onToggle }) {
         Generate
       </button> */}
       <div className='navbar-icons'>
-        <img src={Github} alt='github-icon' />
+        <a href='https://github.com/cyngko' rel='noreferrer' target='_blank'>
+          <img src={Github} alt='github-icon' />
+        </a>
+
         <img
           className='modeIcon'
           src={mode === 'light' ? Moon : Sun}
