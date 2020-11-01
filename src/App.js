@@ -3,6 +3,7 @@ import './App.css';
 import ColorScheme from './components/colorScheme';
 import Navbar from './components/navbar';
 import Controlbar from './components/controlBar';
+import Footer from './components/footer';
 
 function App({ onHandleSpaceBar }) {
   const [scheme, setScheme] = React.useState([
@@ -13,6 +14,12 @@ function App({ onHandleSpaceBar }) {
     [130, 171, 161],
   ]);
   const [mode, setMode] = React.useState('light');
+  const [history, setHistory] = React.useState([scheme]);
+
+  function handleHistoryUpdate(newScheme) {
+    const updatedHistory = [...history, newScheme];
+    setHistory(updatedHistory);
+  }
 
   function getSchemes() {
     var url = 'http://colormind.io/api/';
@@ -26,9 +33,23 @@ function App({ onHandleSpaceBar }) {
         }),
       });
       const content = await rawResponse.json();
-
+      handleHistoryUpdate(content.result);
       setScheme(content.result);
     })();
+  }
+
+  function getPreviousScheme() {
+    const prevSchemeIndex = history.indexOf(scheme);
+    if (prevSchemeIndex > 0) {
+      setScheme(history[prevSchemeIndex - 1]);
+    }
+  }
+
+  function getNextScheme() {
+    const prevSchemeIndex = history.indexOf(scheme);
+    if (prevSchemeIndex < history.length - 1) {
+      setScheme(history[prevSchemeIndex + 1]);
+    }
   }
 
   function toggleClass() {
@@ -43,8 +64,13 @@ function App({ onHandleSpaceBar }) {
   return (
     <div className={toggleClass()}>
       <Navbar onGetScheme={getSchemes} mode={mode} onToggle={handleToggle} />
-      <Controlbar onGetScheme={getSchemes} />
+      <Controlbar
+        onGetScheme={getSchemes}
+        onGetPreviousScheme={getPreviousScheme}
+        onGetNextScheme={getNextScheme}
+      />
       <ColorScheme scheme={scheme} />
+      <Footer />
     </div>
   );
 }

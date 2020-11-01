@@ -2,11 +2,12 @@
 
 .App {
   text-align: center;
+  overflow: hidden;
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   transition: 350ms ease-in-out;
 }
@@ -35,16 +36,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 150px;
+  width: 125px;
   font-weight: bold;
   font-size: 16px;
-  padding: 10px 20px;
-  background-color: #005ce6;
+  padding: 10px 15px;
+  background-color: #06f;
   color: #fff;
   border: none;
-  border-radius: 50px;
+  border-radius: 5px;
   outline: none;
   cursor: pointer;
+  transition: 350ms ease-in-out background-color;
+}
+.GenerateBtn:hover {
+  background-color: #005ce6;
 }
 
 .PaletteBlock {
@@ -70,13 +75,14 @@
 }
 .ColorScheme {
   width: 95%;
-  height: 80%;
+
+  height: 70%;
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 .Navbar {
-  height: 10%;
+  height: 7.5%;
   display: flex;
   width: 95%;
   align-items: center;
@@ -87,20 +93,29 @@
   font-weight: 700;
   font-family: 'Barlow', sans-serif;
 }
-.navbar-icons img {
-  margin-left: 20px;
-}
-.ControllBar {
-  margin-top: 10px;
-  height: 10%;
+.ControlBar {
+  height: 7.5%;
   width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.arrowControl svg {
+  margin-left: 20px;
+  cursor: pointer;
+}
+.Footer {
+  height: 5%;
+}
+.footerContainer {
   display: flex;
   align-items: center;
 }
-.arrowControl {
-  margin-left: 20px;
+.footerContainer p {
+  margin-right: 12px;
+  color: #888;
+  text-decoration: underline;
 }
-
 /* Mode Classes */
 .light {
   background-color: #ffffff;
