@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 .App {
   text-align: center;
@@ -54,7 +55,7 @@
 
 .PaletteBlock {
   width: 19%;
-  height: 90%;
+  height: 100%;
 }
 .ColorBlock {
   width: 100%;
@@ -75,11 +76,10 @@
 }
 .ColorScheme {
   width: 95%;
-
   height: 70%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .Navbar {
   height: 7.5%;
@@ -87,22 +87,26 @@
   width: 95%;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #ddd;
 }
 .logo {
   font-weight: 700;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Fredoka One', cursive;
 }
 .ControlBar {
   height: 7.5%;
   width: 95%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
+.arrowControl {
+  margin: 20px;
+  padding: 0 10px;
+}
 .arrowControl svg {
-  margin-left: 20px;
+  margin: 0px 12px;
   cursor: pointer;
+  width: 16px;
+  height: 16px;
 }
 .Footer {
   height: 5%;
@@ -112,18 +116,27 @@
   align-items: center;
 }
 .footerContainer p {
+  font-size: 14px;
   margin-right: 12px;
   color: #888;
   text-decoration: underline;
 }
+svg:hover {
+  stroke: #06f;
+  fill: #06f;
+}
 /* Mode Classes */
 .light {
   background-color: #ffffff;
-  color: #111;
+  color: #06f;
+  fill: #ddd;
+  stroke: #ddd;
 }
 .dark {
-  background-color: #191919;
-  color: #eee;
+  background-color: #222222;
+  color: #ddd;
+  fill: #888;
+  stroke: #888;
 }
 .modeIcon {
   cursor: pointer;

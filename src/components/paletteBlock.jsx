@@ -4,7 +4,9 @@ export default function PaletteBlock({ color }) {
   const getHexColor = () => {
     let hex = '';
     for (let num of color) {
-      hex = hex + num.toString(16);
+      const hexFract =
+        num.toString(16).length === 1 ? 0 + num.toString(16) : num.toString(16);
+      hex = hex + hexFract;
     }
     return hex.toUpperCase();
   };

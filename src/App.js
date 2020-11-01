@@ -52,9 +52,9 @@ function App({ onHandleSpaceBar }) {
     }
   }
 
-  function toggleClass() {
-    const baseClass = 'App ';
-    const classList = baseClass + (mode === 'light' ? 'light' : 'dark');
+  function toggleClass(base) {
+    const baseClass = base;
+    const classList = baseClass + (mode === 'light' ? ' light' : ' dark');
     return classList;
   }
   function handleToggle() {
@@ -62,12 +62,13 @@ function App({ onHandleSpaceBar }) {
     setMode(newMode);
   }
   return (
-    <div className={toggleClass()}>
-      <Navbar onGetScheme={getSchemes} mode={mode} onToggle={handleToggle} />
+    <div className={toggleClass('App')}>
+      <Navbar mode={mode} onToggle={handleToggle} />
       <Controlbar
         onGetScheme={getSchemes}
         onGetPreviousScheme={getPreviousScheme}
         onGetNextScheme={getNextScheme}
+        mode={mode}
       />
       <ColorScheme scheme={scheme} />
       <Footer />
