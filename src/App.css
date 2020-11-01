@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
 .App {
@@ -33,7 +33,7 @@
   }
 }
 .GenerateBtn {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Rubik', sans-serif;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -71,7 +71,7 @@
   transform: translateX(-50%);
   font-weight: bold;
   font-size: 20px;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Rubik', sans-serif;
   padding: 15px 5px;
 }
 .ColorScheme {
@@ -122,12 +122,26 @@
   color: #888;
   text-decoration: underline;
 }
-svg:hover {
+.Navbar svg:hover,
+.ControlBar svg:hover {
   stroke: #06f;
   fill: #06f;
 }
 .modeIcon {
   cursor: pointer;
+}
+
+.colorBlockControls {
+  display: flex;
+  height: 80%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  opacity: 0;
+  transition: 250ms ease opacity;
+}
+.colorBlockControls:hover {
+  opacity: 1;
 }
 
 /* Mode Classes */
@@ -142,6 +156,20 @@ svg:hover {
   color: #ddd;
   fill: #888;
   stroke: #888;
+}
+.lightContrast {
+  color: #eee;
+  stroke: #ccc;
+}
+.lightContrast:hover {
+  stroke: #eee;
+}
+.darkContrast {
+  color: #000;
+  stroke: #444;
+}
+.darkContrast:hover {
+  stroke: #111;
 }
 
 /* Mobile */

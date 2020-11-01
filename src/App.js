@@ -70,7 +70,7 @@ function App({ onHandleSpaceBar }) {
         onGetNextScheme={getNextScheme}
         mode={mode}
       />
-      <ColorScheme scheme={scheme} />
+      <ColorScheme scheme={scheme} mode={mode} onToggle={handleToggle} />
       <Footer />
     </div>
   );
