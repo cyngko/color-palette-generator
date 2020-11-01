@@ -26,7 +26,7 @@ export default function PaletteBlock({ color }) {
         }}>
         <div
           className='colorName'
-          style={{ color: getFontColor(color) }}>{`#${getHexColor()}`}</div>
+          style={{ color: getFontColor(color) }}>{`${getHexColor()}`}</div>
       </div>
       {/* <p className='colorName'>{`rgb(${color[0]}, ${color[1]}, ${color[2]})`}</p> */}
     </div>
