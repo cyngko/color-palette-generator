@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function PaletteBlock({ color, mode }) {
+export default function PaletteBlock({ color, onCopy, id }) {
   const getHexColor = () => {
     let hex = '';
     for (let num of color) {
@@ -18,16 +18,16 @@ export default function PaletteBlock({ color, mode }) {
     }
     return 765 / 2 > sum ? 'lightContrast' : 'darkContrast';
   }
-  function copyColor() {
-    const copyColor = document.querySelector('.copyColor');
-    /* Select the text field */
-    copyColor.select();
-    copyColor.setSelectionRange(0, 99999); /*For mobile devices*/
-    document.execCommand('copy');
+  //   function copyColor() {
+  //     const copyColor = document.querySelector('.copyColor');
+  //     /* Select the text field */
+  //     copyColor.select();
+  //     copyColor.setSelectionRange(0, 99999); /*For mobile devices*/
+  //     document.execCommand('copy');
 
-    /* Alert the copied text */
-    alert('Copied the text: ' + copyColor.value);
-  }
+  //     /* Alert the copied text */
+  //     alert('Copied the text: ' + copyColor.value);
+  //   }
   const lock = (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -53,7 +53,7 @@ export default function PaletteBlock({ color, mode }) {
       strokeWidth='2'
       strokeLinecap='round'
       strokeLinejoin='round'
-      onClick={() => copyColor()}
+      onClick={() => onCopy(id)}
       className={getContrastClass(color)}>
       <rect x='9' y='9' width='13' height='13' rx='2' ry='2'></rect>
       <path d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'></path>
