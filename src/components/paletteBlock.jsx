@@ -18,7 +18,16 @@ export default function PaletteBlock({ color, mode }) {
     }
     return 765 / 2 > sum ? 'lightContrast' : 'darkContrast';
   }
+  function copyColor() {
+    const copyColor = document.querySelector('.copyColor');
+    /* Select the text field */
+    copyColor.select();
+    copyColor.setSelectionRange(0, 99999); /*For mobile devices*/
+    document.execCommand('copy');
 
+    /* Alert the copied text */
+    alert('Copied the text: ' + copyColor.value);
+  }
   const lock = (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -44,6 +53,7 @@ export default function PaletteBlock({ color, mode }) {
       strokeWidth='2'
       strokeLinecap='round'
       strokeLinejoin='round'
+      onClick={() => copyColor()}
       className={getContrastClass(color)}>
       <rect x='9' y='9' width='13' height='13' rx='2' ry='2'></rect>
       <path d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'></path>
@@ -56,7 +66,7 @@ export default function PaletteBlock({ color, mode }) {
       height='24'
       viewBox='0 0 24 24'
       fill='none'
-      stroke-width='2'
+      strokeWidth='2'
       strokeLinecap='round'
       strokeLinejoin='round'
       className={getContrastClass(color)}>
@@ -80,10 +90,16 @@ export default function PaletteBlock({ color, mode }) {
           <i>{move}</i>
           <i>{copy}</i>
         </div>
-        <div
+        {/* <div
           className={`colorName ${getContrastClass(
             color
-          )}`}>{`${getHexColor()}`}</div>
+          )}`}>{`${getHexColor()}`}</div> */}
+        <input
+          type='text'
+          value={getHexColor()}
+          className={`copyColor ${getContrastClass(color)}`}
+          readOnly
+        />
       </div>
       {/* <p className='colorName'>{`rgb(${color[0]}, ${color[1]}, ${color[2]})`}</p> */}
     </div>
