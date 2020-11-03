@@ -6,13 +6,27 @@ import Controlbar from './components/controlBar';
 import Footer from './components/footer';
 
 function App({ onHandleSpaceBar }) {
+  // const [scheme, setScheme] = React.useState([
+  //   [188, 182, 255],
+  //   [184, 225, 255],
+  //   [169, 255, 247],
+  //   [148, 251, 171],
+  //   [130, 171, 161],
+  // ]);
   const [scheme, setScheme] = React.useState([
-    [188, 182, 255],
-    [184, 225, 255],
-    [169, 255, 247],
-    [148, 251, 171],
-    [130, 171, 161],
+    { id: 1, color: [188, 182, 255], isToggled: false, input: 'N' },
+    { id: 2, color: [184, 225, 255], isToggled: false, input: 'N' },
+    { id: 3, color: [169, 255, 247], isToggled: false, input: 'N' },
+    { id: 4, color: [148, 251, 171], isToggled: false, input: 'N' },
+    { id: 5, color: [130, 171, 161], isToggled: false, input: 'N' },
   ]);
+  // const [inputColors, setInputColors] = React.useState([
+  //   'N',
+  //   'N',
+  //   'N',
+  //   'N',
+  //   'N',
+  // ]);
   const [mode, setMode] = React.useState('light');
   const [history, setHistory] = React.useState([scheme]);
 
@@ -30,11 +44,18 @@ function App({ onHandleSpaceBar }) {
 
         body: JSON.stringify({
           model: 'default',
+          input: scheme.map((element) => element.input),
         }),
       });
       const content = await rawResponse.json();
-      handleHistoryUpdate(content.result);
-      setScheme(content.result);
+      const resScheme = content.result;
+      handleHistoryUpdate(resScheme);
+      const newScheme = [];
+      for (const [index, value] of scheme.entries()) {
+        value.color = resScheme[index];
+        newScheme.push(value);
+      }
+      setScheme(newScheme);
     })();
   }
 

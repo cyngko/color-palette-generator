@@ -19,11 +19,11 @@ export default function ColorScheme({ scheme, mode, onToggle }) {
   }
   return (
     <div className='ColorScheme'>
-      {scheme.map((rgb, i) => (
+      {scheme.map((el, i) => (
         <PaletteBlock
           key={i}
           id={i}
-          color={rgb}
+          color={el.color}
           onToggle={onToggle}
           onCopy={copyColor}
         />

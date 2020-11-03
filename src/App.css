@@ -64,16 +64,6 @@
   transition: 250ms ease-in-out;
   position: relative;
 }
-.colorName {
-  position: absolute;
-  bottom: 3%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-weight: bold;
-  font-size: 20px;
-  font-family: 'Rubik', sans-serif;
-  padding: 15px 5px;
-}
 .copyColor {
   height: 20%;
   width: 100%;
@@ -166,7 +156,7 @@
   background: lightgreen;
   color: green;
   border-radius: 15px;
-  transition: 350ms ease-in;
+  transition: 450ms ease-in;
 }
 /* Mode Classes */
 .light {
