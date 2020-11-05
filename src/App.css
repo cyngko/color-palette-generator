@@ -52,7 +52,9 @@
 .GenerateBtn:hover {
   background-color: #005ce6;
 }
-
+#generateIcon {
+  transition: 550ms ease-in-out;
+}
 .PaletteBlock {
   width: 19%;
   height: 100%;
@@ -61,7 +63,7 @@
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  transition: 250ms ease-in-out;
+  transition: 150ms ease;
   position: relative;
 }
 .copyColor {
@@ -101,16 +103,7 @@
   display: flex;
   align-items: center;
 }
-.arrowControl {
-  margin: 20px;
-  padding: 0 5px;
-}
-.arrowControl svg {
-  margin: 0px 10px;
-  cursor: pointer;
-  width: 16px;
-  height: 16px;
-}
+
 .Footer {
   height: 5%;
 }
@@ -140,10 +133,16 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  opacity: 0;
-  transition: 450ms ease-in-out opacity;
+  opacity: 1;
 }
-.colorBlockControls:hover {
+.colorBlockControls i {
+  transition: 450ms ease-in-out opacity;
+  opacity: 0;
+}
+.colorBlockControls:hover i {
+  opacity: 1;
+}
+.isLocked {
   opacity: 1;
 }
 .CopyConfirmation {
@@ -158,6 +157,7 @@
   border-radius: 15px;
   transition: 450ms ease-in;
 }
+
 /* Mode Classes */
 .light {
   background-color: #ffffff;

@@ -1,6 +1,12 @@
 import React from 'react';
 
-export default function PaletteBlock({ color, onCopy, id }) {
+export default function PaletteBlock({
+  color,
+  onCopy,
+  id,
+  onHandleLock,
+  isLocked,
+}) {
   const getHexColor = () => {
     let hex = '';
     for (let num of color) {
@@ -38,6 +44,7 @@ export default function PaletteBlock({ color, onCopy, id }) {
       strokeWidth='2'
       strokeLinecap='round'
       strokeLinejoin='round'
+      onClick={() => onHandleLock(id)}
       className={getContrastClass(color)}>
       <rect x='3' y='11' width='18' height='11' rx='2' ry='2'></rect>
       <path d='M7 11V7a5 5 0 0 1 10 0v4'></path>
@@ -86,15 +93,20 @@ export default function PaletteBlock({ color, onCopy, id }) {
           background: `rgb(${color[0]}, ${color[1]}, ${color[2]})`,
         }}>
         <div className='colorBlockControls'>
-          <i>{lock}</i>
           <i>{move}</i>
           <i>{copy}</i>
+          <i
+            id={`lock_${id}-${isLocked}`}
+            style={{ opacity: isLocked ? 1 : null }}>
+            {lock}
+          </i>
         </div>
         {/* <div
           className={`colorName ${getContrastClass(
             color
           )}`}>{`${getHexColor()}`}</div> */}
         <input
+          id={`color_${id}`}
           type='text'
           value={getHexColor()}
           className={`copyColor ${getContrastClass(color)}`}
