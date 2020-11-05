@@ -141,6 +141,7 @@ function App() {
         onDragStart={onDragStart}
         onDragOver={onDragOver}
         onDrop={onDrop}
+        dragAndDrop={dragAndDrop}
       />
       <Footer />
     </div>

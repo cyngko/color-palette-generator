@@ -10,6 +10,7 @@ export default function PaletteBlock({
   onDrop,
   onDragOver,
   position,
+  dragAndDrop,
 }) {
   const getHexColor = () => {
     let hex = '';
@@ -91,7 +92,11 @@ export default function PaletteBlock({
   );
   return (
     <div
-      className='PaletteBlock'
+      className={`PaletteBlock ${
+        dragAndDrop && dragAndDrop.draggedTo === Number(position)
+          ? 'dropArea'
+          : ''
+      }`}
       draggable='true'
       onDragStart={onDragStart}
       onDragOver={onDragOver}

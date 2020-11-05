@@ -8,6 +8,7 @@ export default function ColorScheme({
   onDragStart,
   onDrop,
   onDragOver,
+  dragAndDrop,
 }) {
   function copyColor(i) {
     const copyColor = document.querySelector(`#color_${i}`);
@@ -38,6 +39,7 @@ export default function ColorScheme({
           onDragStart={onDragStart}
           onDragOver={onDragOver}
           onDrop={onDrop}
+          dragAndDrop={dragAndDrop}
         />
       ))}
       <CopyConfirmation />
