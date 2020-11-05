@@ -40,8 +40,8 @@ export default function Navbar({ mode, onToggle }) {
   );
   const borderStyles =
     mode === 'light'
-      ? { borderBottom: '2px solid #ddd' }
-      : { borderBottom: '2px solid #888' };
+      ? { borderBottom: '1px solid #ddd' }
+      : { borderBottom: '1px solid #888' };
   return (
     <div className='Navbar' style={borderStyles}>
       <h2 className='logo'>COLYNGKO</h2>
