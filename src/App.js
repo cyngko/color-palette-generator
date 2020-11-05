@@ -64,11 +64,72 @@ function App() {
           }
         : c
     );
-    console.log(newScheme);
     setScheme({
       color: newScheme,
     });
   }
+
+  // Drag n Drop
+
+  const initialDnDState = {
+    draggedFrom: null,
+    draggedTo: null,
+    isDragging: false,
+    originalOrder: [],
+    updatedOrder: [],
+  };
+  const [dragAndDrop, setDragAndDrop] = React.useState(initialDnDState);
+
+  const onDragStart = (e) => {
+    const initialPosition = Number(e.currentTarget.dataset.position);
+    setDragAndDrop({
+      ...dragAndDrop,
+      draggedFrom: initialPosition,
+      isDragging: true,
+      originalOrder: scheme.color,
+    });
+    e.dataTransfer.setData('text/html', '');
+  };
+  const onDragOver = (e) => {
+    e.preventDefault();
+    let newList = dragAndDrop.originalOrder;
+
+    const draggedFrom = dragAndDrop.draggedFrom;
+
+    const draggedTo = Number(e.currentTarget.dataset.position);
+
+    const itemDragged = newList[draggedFrom];
+
+    const remainingItems = newList.filter(
+      (item, index) => index !== draggedFrom
+    );
+
+    newList = [
+      ...remainingItems.slice(0, draggedTo),
+      itemDragged,
+      ...remainingItems.slice(draggedTo),
+    ];
+
+    if (draggedTo !== dragAndDrop.draggedTo) {
+      setDragAndDrop({
+        ...dragAndDrop,
+
+        updatedOrder: newList,
+        draggedTo: draggedTo,
+      });
+    }
+  };
+  const onDrop = (e) => {
+    setScheme({ color: dragAndDrop.updatedOrder });
+
+    setDragAndDrop({
+      ...dragAndDrop,
+      draggedFrom: null,
+      draggedTo: null,
+      isDragging: false,
+    });
+  };
+
   return (
     <div className={toggleClass('App')}>
       <Navbar mode={mode} onToggle={handleToggle} />
@@ -77,6 +138,9 @@ function App() {
         scheme={scheme.color}
         mode={mode}
         onHandleLock={handleLock}
+        onDragStart={onDragStart}
+        onDragOver={onDragOver}
+        onDrop={onDrop}
       />
       <Footer />
     </div>

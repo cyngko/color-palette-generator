@@ -13,25 +13,6 @@
   transition: 350ms ease-in-out;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 .GenerateBtn {
   font-family: 'Rubik', sans-serif;
   /* display: flex;
@@ -109,6 +90,9 @@
 .Footer {
   height: 5%;
 }
+.Footer a {
+  text-decoration: none;
+}
 .footerContainer {
   height: 100%;
   display: flex;
@@ -118,8 +102,8 @@
   font-size: 14px;
   margin-right: 12px;
   color: #888;
-  text-decoration: underline;
 }
+
 .Navbar svg:hover,
 .ControlBar svg:hover {
   stroke: #06f;
@@ -191,7 +175,7 @@
 /* Mobile */
 @media screen and (max-width: 768px) {
   .ColorScheme {
-    width: 95%;
+    width: 90%;
     height: 70%;
     display: flex;
     flex-direction: column;
@@ -199,6 +183,10 @@
     justify-content: space-between;
     -webkit-order: 3;
     order: 3;
+  }
+  .Navbar,
+  .ControlBar {
+    width: 90%;
   }
   .PaletteBlock {
     width: 100%;
@@ -214,11 +202,13 @@
     align-items: center;
   }
   .colorBlockControls {
-    opacity: 1;
     width: 50%;
     flex-direction: row;
     position: absolute;
     right: 50px;
+  }
+  .colorBlockControls i {
+    opacity: 1;
   }
   .colorBlockControls i svg {
     width: 16px;

@@ -6,6 +6,10 @@ export default function PaletteBlock({
   id,
   onHandleLock,
   isLocked,
+  onDragStart,
+  onDrop,
+  onDragOver,
+  position,
 }) {
   const getHexColor = () => {
     let hex = '';
@@ -86,7 +90,13 @@ export default function PaletteBlock({
     </svg>
   );
   return (
-    <div className='PaletteBlock'>
+    <div
+      className='PaletteBlock'
+      draggable='true'
+      onDragStart={onDragStart}
+      onDragOver={onDragOver}
+      onDrop={onDrop}
+      data-position={position}>
       <div
         className='ColorBlock'
         style={{
