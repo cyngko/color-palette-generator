@@ -1,4 +1,5 @@
 import React from 'react';
+import Github from './footer';
 
 export default function Navbar({ mode, onToggle }) {
   const moon = (
@@ -44,6 +45,7 @@ export default function Navbar({ mode, onToggle }) {
   return (
     <div className='Navbar' style={borderStyles}>
       <h2 className='logo'>COLYNGKO</h2>
+      <Github />
       <i className='modeIcon' onClick={onToggle}>
         {mode === 'light' ? moon : sun}
       </i>
