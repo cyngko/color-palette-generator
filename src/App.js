@@ -59,11 +59,12 @@ function App() {
         ? {
             ...c,
             isToggled: c.isToggled === false ? true : false,
-            color: c.color,
-            input: c.color,
+            // color: c.color,
+            input: c.isToggled === false ? c.color : 'N',
           }
         : c
     );
+    console.log(newScheme);
     setScheme({
       color: newScheme,
     });
