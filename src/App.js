@@ -50,7 +50,9 @@ function App() {
       const resScheme = content.result;
       const newScheme = [];
       for (const [index, value] of scheme.color.entries()) {
-        value.color = resScheme[index];
+        value.isToggled
+          ? (value.color = scheme.color[index].color)
+          : (value.color = resScheme[index]);
         newScheme.push(value);
       }
       // const historyUpdate = [...scheme.history, newScheme];
