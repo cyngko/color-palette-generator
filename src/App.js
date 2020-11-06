@@ -69,6 +69,8 @@ function App() {
     });
   }
 
+  // MOVE COLOR BLOCKS
+
   // Drag n Drop
 
   const initialDnDState = {
@@ -130,6 +132,27 @@ function App() {
     });
   };
 
+  // Move Blocks on Mobile with click
+  const changeBlockPosition = (arr, init, target) => {
+    [arr[init], arr[target]] = [arr[target], arr[init]];
+    return arr;
+  };
+
+  const onMoveUp = (position) => {
+    const movedFrom = Number(position);
+    const movedTo = movedFrom - 1;
+    const newOrder = changeBlockPosition(scheme.color, movedFrom, movedTo);
+    setScheme({ color: newOrder });
+  };
+  const onMoveDown = (position) => {
+    const movedFrom = Number(position);
+
+    const movedTo = movedFrom + 1;
+
+    const newOrder = changeBlockPosition(scheme.color, movedFrom, movedTo);
+    setScheme({ color: newOrder });
+  };
+
   return (
     <div className={toggleClass('App')}>
       <Navbar mode={mode} onToggle={handleToggle} />
@@ -142,6 +165,8 @@ function App() {
         onDragOver={onDragOver}
         onDrop={onDrop}
         dragAndDrop={dragAndDrop}
+        onMoveUp={onMoveUp}
+        onMoveDown={onMoveDown}
       />
       <Footer />
     </div>

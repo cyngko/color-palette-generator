@@ -11,6 +11,8 @@ export default function PaletteBlock({
   onDragOver,
   position,
   dragAndDrop,
+  onMoveUp,
+  onMoveDown,
 }) {
   const getHexColor = () => {
     let hex = '';
@@ -82,13 +84,45 @@ export default function PaletteBlock({
       strokeWidth='2'
       strokeLinecap='round'
       strokeLinejoin='round'
-      className={getContrastClass(color)}>
+      className={`moveIcon ${getContrastClass(color)}`}>
       <polyline points='5 9 2 12 5 15'></polyline>
       <polyline points='9 5 12 2 15 5'></polyline>
       <polyline points='15 19 12 22 9 19'></polyline>
       <polyline points='19 9 22 12 19 15'></polyline>
       <line x1='2' y1='12' x2='22' y2='12'></line>
       <line x1='12' y1='2' x2='12' y2='22'></line>
+    </svg>
+  );
+  const moveDown = (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='24'
+      height='24'
+      viewBox='0 0 24 24'
+      fill='none'
+      strokeWidth='2'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      style={{ display: position === 4 ? 'none' : null }}
+      onClick={() => onMoveDown(position)}
+      className={getContrastClass(color)}>
+      <polyline points='6 9 12 15 18 9'></polyline>
+    </svg>
+  );
+  const moveUp = (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='24'
+      height='24'
+      viewBox='0 0 24 24'
+      fill='none'
+      strokeWidth='2'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+      style={{ display: position === 0 ? 'none' : null }}
+      onClick={() => onMoveUp(position)}
+      className={getContrastClass(color)}>
+      <polyline points='18 15 12 9 6 15'></polyline>
     </svg>
   );
   return (
@@ -110,6 +144,12 @@ export default function PaletteBlock({
         }}>
         <div className='colorBlockControls'>
           <i>{move}</i>
+          <i
+            style={{ display: 'flex', flexDirection: 'column' }}
+            className='mobileMoveIcons'>
+            {moveUp}
+            {moveDown}
+          </i>
           <i>{copy}</i>
           <i
             id={`lock_${id}-${isLocked}`}
