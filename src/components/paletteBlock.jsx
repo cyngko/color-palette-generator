@@ -49,6 +49,7 @@ export default function PaletteBlock({
       strokeWidth='2'
       strokeLinecap='round'
       strokeLinejoin='round'
+      style={{ opacity: isLocked ? 1 : null }}
       onClick={() => onHandleLock(id)}
       className={getContrastClass(color)}>
       <rect x='3' y='11' width='18' height='11' rx='2' ry='2'></rect>
@@ -112,7 +113,9 @@ export default function PaletteBlock({
           <i>{copy}</i>
           <i
             id={`lock_${id}-${isLocked}`}
-            style={{ opacity: isLocked ? 1 : null }}>
+            style={{
+              opacity: isLocked ? 1 : null,
+            }}>
             {lock}
           </i>
         </div>
