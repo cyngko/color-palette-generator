@@ -11,13 +11,15 @@ export default function ColorPicker({ color, id, onColorChange }) {
       }}>
       <div className='popUpContent'>
         <p>Change color</p>
-        <input
-          type='color'
-          name='colorPicker'
-          id={`colorPickerInput_${id}`}
-          value={`#${color}`}
-          onChange={onColorChange}
-        />
+        <div className='inputContainer'>
+          <input
+            type='color'
+            name='colorPicker'
+            id={`colorPickerInput_${id}`}
+            value={`#${color}`}
+            onChange={onColorChange}
+          />
+        </div>
       </div>
     </div>
   );
