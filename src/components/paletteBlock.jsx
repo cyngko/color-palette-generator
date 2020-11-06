@@ -1,4 +1,5 @@
 import React from 'react';
+import ColorPicker from './colorPicker';
 
 export default function PaletteBlock({
   color,
@@ -13,6 +14,8 @@ export default function PaletteBlock({
   dragAndDrop,
   onMoveUp,
   onMoveDown,
+  onColorChange,
+  onShowColorPicker,
 }) {
   const getHexColor = () => {
     let hex = '';
@@ -163,11 +166,17 @@ export default function PaletteBlock({
           className={`colorName ${getContrastClass(
             color
           )}`}>{`${getHexColor()}`}</div> */}
+        <ColorPicker
+          color={getHexColor()}
+          id={id}
+          onColorChange={onColorChange}
+        />
         <input
           id={`color_${id}`}
           type='text'
           value={getHexColor()}
           className={`copyColor ${getContrastClass(color)}`}
+          onClick={() => onShowColorPicker(id)}
           readOnly
         />
       </div>

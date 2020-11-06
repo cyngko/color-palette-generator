@@ -153,8 +153,50 @@ function App() {
     setScheme({ color: newOrder });
   };
 
+  // Color Input
+
+  const onColorChange = (e) => {
+    const newHex = e.target.value;
+    const r = parseInt(`0x${newHex.substring(1, 3)}`);
+    const g = parseInt(`0x${newHex.substring(3, 5)}`);
+    const b = parseInt(`0x${newHex.substring(5, 7)}`);
+    const newRGB = [r, g, b];
+    const updatedScheme = scheme.color.map((c) =>
+      e.target.id === `colorPickerInput_${c.id}`
+        ? {
+            ...c,
+            color: newRGB,
+          }
+        : c
+    );
+    setScheme({
+      color: updatedScheme,
+    });
+  };
+
+  // Color Picker
+  const [isPopUpOpen, setIsPopUpOpen] = React.useState(false);
+
+  const hideColorPicker = () => {
+    const colorPicker = document.querySelectorAll('.ColorPicker');
+    for (let popup of colorPicker) {
+      if (popup.style.display === 'block') {
+        popup.style.display = 'none';
+      }
+    }
+    setIsPopUpOpen(false);
+  };
+  const showColorPicker = (id) => {
+    const colorPicker = document.querySelector(`#colorPicker_${id}`);
+    console.log(`#colorPicker_${id}`);
+    colorPicker.style.display = 'block';
+    setIsPopUpOpen(true);
+  };
+
   return (
-    <div className={toggleClass('App')}>
+    <div
+      className={toggleClass('App')}
+      onClick={isPopUpOpen ? () => hideColorPicker() : null}>
       <Navbar mode={mode} onToggle={handleToggle} />
       <Controlbar onGetScheme={getSchemes} mode={mode} />
       <ColorScheme
@@ -167,6 +209,8 @@ function App() {
         dragAndDrop={dragAndDrop}
         onMoveUp={onMoveUp}
         onMoveDown={onMoveDown}
+        onColorChange={onColorChange}
+        onShowColorPicker={showColorPicker}
       />
       <Footer />
     </div>

@@ -11,6 +11,8 @@ export default function ColorScheme({
   dragAndDrop,
   onMoveUp,
   onMoveDown,
+  onColorChange,
+  onShowColorPicker,
 }) {
   function copyColor(i) {
     const copyColor = document.querySelector(`#color_${i}`);
@@ -44,6 +46,8 @@ export default function ColorScheme({
           dragAndDrop={dragAndDrop}
           onMoveUp={onMoveUp}
           onMoveDown={onMoveDown}
+          onColorChange={onColorChange}
+          onShowColorPicker={onShowColorPicker}
         />
       ))}
       <CopyConfirmation />
