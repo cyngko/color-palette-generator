@@ -20,33 +20,45 @@ function App() {
   function getSchemes() {
     var url = 'http://colormind.io/api/';
 
-    (async () => {
-      const rawResponse = await fetch(url, {
-        method: 'POST',
+    try {
+      (async () => {
+        const rawResponse = await fetch(url, {
+          method: 'POST',
 
-        body: JSON.stringify({
-          model: 'default',
-          input: scheme.color.map((element) => element.input),
-        }),
-      });
-      const content = await rawResponse.json();
-      const resScheme = content.result;
+          body: JSON.stringify({
+            model: 'default',
+            input: scheme.color.map((element) => element.input),
+          }),
+        });
+        const content = await rawResponse.json();
+        const resScheme = content.result;
+        const newScheme = [];
+        for (const [index, value] of scheme.color.entries()) {
+          value.isToggled
+            ? (value.color = scheme.color[index].color)
+            : (value.color = resScheme[index]);
+          newScheme.push(value);
+        }
+
+        setScheme({
+          color: newScheme,
+        });
+      })();
+    } catch (error) {
+      const getNum = () => Math.floor(Math.random() * 256);
       const newScheme = [];
       for (const [index, value] of scheme.color.entries()) {
         value.isToggled
           ? (value.color = scheme.color[index].color)
-          : (value.color = resScheme[index]);
+          : (value.color = [getNum(), getNum(), getNum()]);
         newScheme.push(value);
       }
       setScheme({
         color: newScheme,
       });
-    })();
+      console.error(error);
+    }
   }
-
-  React.useEffect(() => {
-    getSchemes();
-  }, []);
 
   function toggleClass(base) {
     const baseClass = base;
