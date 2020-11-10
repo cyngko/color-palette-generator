@@ -18,46 +18,42 @@ function App() {
   const [mode, setMode] = React.useState('light');
 
   function getSchemes() {
-    var url = 'http://colormind.io/api/';
-
-    try {
-      (async () => {
-        const rawResponse = await fetch(url, {
-          method: 'POST',
-
-          body: JSON.stringify({
-            model: 'default',
-            input: scheme.color.map((element) => element.input),
-          }),
-        });
-        const content = await rawResponse.json();
-        const resScheme = content.result;
-        const newScheme = [];
-        for (const [index, value] of scheme.color.entries()) {
-          value.isToggled
-            ? (value.color = scheme.color[index].color)
-            : (value.color = resScheme[index]);
-          newScheme.push(value);
-        }
-
-        setScheme({
-          color: newScheme,
-        });
-      })();
-    } catch (error) {
-      const getNum = () => Math.floor(Math.random() * 256);
-      const newScheme = [];
-      for (const [index, value] of scheme.color.entries()) {
-        value.isToggled
-          ? (value.color = scheme.color[index].color)
-          : (value.color = [getNum(), getNum(), getNum()]);
-        newScheme.push(value);
-      }
-      setScheme({
-        color: newScheme,
-      });
-      console.error(error);
+    const getNum = () => Math.floor(Math.random() * 256);
+    const newScheme = [];
+    for (const [index, value] of scheme.color.entries()) {
+      value.isToggled
+        ? (value.color = scheme.color[index].color)
+        : (value.color = [getNum(), getNum(), getNum()]);
+      newScheme.push(value);
     }
+    setScheme({
+      color: newScheme,
+    });
+    // var url = 'http://colormind.io/api/';
+
+    //   (async () => {
+    //     const rawResponse = await fetch(url, {
+    //       method: 'POST',
+
+    //       body: JSON.stringify({
+    //         model: 'default',
+    //         input: scheme.color.map((element) => element.input),
+    //       }),
+    //     });
+    //     const content = await rawResponse.json();
+    //     const resScheme = content.result;
+    //     const newScheme = [];
+    //     for (const [index, value] of scheme.color.entries()) {
+    //       value.isToggled
+    //         ? (value.color = scheme.color[index].color)
+    //         : (value.color = resScheme[index]);
+    //       newScheme.push(value);
+    //     }
+
+    //     setScheme({
+    //       color: newScheme,
+    //     });
+    //   })();
   }
 
   function toggleClass(base) {
