@@ -12,26 +12,12 @@
   align-items: center;
   transition: 350ms ease-in-out;
 }
-
+.generateMessage {
+  text-align: center;
+  color: #888;
+}
 .GenerateBtn {
-  width: 120px;
-  font-family: 'Rubik', sans-serif;
-  font-weight: bold;
-  font-size: 16px;
-  padding: 10px 15px;
-  background-color: #06f;
-  color: #fff;
-  border: 1px solid #005ce6;
-  border-radius: 5px;
-  outline: none;
-  cursor: pointer;
-  transition: 350ms ease-in-out background-color;
-}
-.GenerateBtn:hover {
-  background-color: #005ce6;
-}
-#generateIcon {
-  transition: 550ms ease-in-out;
+  display: none;
 }
 .PaletteBlock {
   width: 19%;
@@ -133,6 +119,7 @@
   width: 95%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .Footer {
@@ -312,12 +299,26 @@
   .Footer {
     display: none;
   }
+  .generateMessage {
+    display: none;
+  }
   .GenerateBtn {
     width: 100%;
     justify-content: center;
     font-size: 16px;
     padding: 20px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+    background-color: #06f;
+    color: #fff;
+    border: 1px solid #005ce6;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: 350ms ease-in-out background-color;
+    display: block;
   }
+
   .colorBlockControls input {
     font-size: 12px;
   }

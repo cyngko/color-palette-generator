@@ -6,6 +6,9 @@ export default function ControllBar({ onGetScheme, mode }) {
       <button className='GenerateBtn' onClick={onGetScheme}>
         Generate
       </button>
+      <p className='generateMessage'>
+        Hit the spacebar to start the generator!
+      </p>
     </div>
   );
 }

@@ -81,6 +81,12 @@ function App() {
     //   })();
   }
 
+  document.addEventListener('keyup', (e) => {
+    if (e.key === ' ') {
+      getSchemes();
+    }
+  });
+
   function toggleClass(base) {
     const baseClass = base;
     const classList = baseClass + (mode === 'light' ? ' light' : ' dark');

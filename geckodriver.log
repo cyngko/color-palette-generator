@@ -1,0 +1,5 @@
+1605016500249	geckodriver	INFO	Listening on 127.0.0.1:50248
+1605016501262	mozrunner::runner	INFO	Running command: "/Applications/Firefox.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/bm/3_lxq0sn7tqd2wy28vywhk000000gn/T/rust_mozprofilecF8nLN"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1605016507375	Marionette	INFO	Listening on port 50259
+1605016519066	Marionette	INFO	Stopped listening on port 50259
