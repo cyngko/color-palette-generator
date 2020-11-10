@@ -282,6 +282,9 @@
     display: flex;
     align-items: center;
   }
+  .ColorBlock input {
+    pointer-events: none;
+  }
   .colorBlockControls {
     width: 50%;
     flex-direction: row;
