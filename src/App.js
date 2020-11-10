@@ -44,6 +44,10 @@ function App() {
     })();
   }
 
+  React.useEffect(() => {
+    getSchemes();
+  }, []);
+
   function toggleClass(base) {
     const baseClass = base;
     const classList = baseClass + (mode === 'light' ? ' light' : ' dark');
