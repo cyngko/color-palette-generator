@@ -6,19 +6,44 @@ import Controlbar from './components/controlBar';
 import Footer from './components/footer';
 
 function App() {
+  const getNum = () => Math.floor(Math.random() * 256);
   const [scheme, setScheme] = React.useState({
     color: [
-      { id: 1, color: [188, 182, 255], isToggled: false, input: 'N' },
-      { id: 2, color: [184, 225, 255], isToggled: false, input: 'N' },
-      { id: 3, color: [169, 255, 247], isToggled: false, input: 'N' },
-      { id: 4, color: [148, 251, 171], isToggled: false, input: 'N' },
-      { id: 5, color: [130, 171, 161], isToggled: false, input: 'N' },
+      {
+        id: 1,
+        color: [getNum(), getNum(), getNum()],
+        isToggled: false,
+        input: 'N',
+      },
+      {
+        id: 2,
+        color: [getNum(), getNum(), getNum()],
+        isToggled: false,
+        input: 'N',
+      },
+      {
+        id: 3,
+        color: [getNum(), getNum(), getNum()],
+        isToggled: false,
+        input: 'N',
+      },
+      {
+        id: 4,
+        color: [getNum(), getNum(), getNum()],
+        isToggled: false,
+        input: 'N',
+      },
+      {
+        id: 5,
+        color: [getNum(), getNum(), getNum()],
+        isToggled: false,
+        input: 'N',
+      },
     ],
   });
   const [mode, setMode] = React.useState('light');
 
   function getSchemes() {
-    const getNum = () => Math.floor(Math.random() * 256);
     const newScheme = [];
     for (const [index, value] of scheme.color.entries()) {
       value.isToggled
