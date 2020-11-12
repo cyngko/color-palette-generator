@@ -54,31 +54,6 @@ function App() {
     setScheme({
       color: newScheme,
     });
-    // var url = 'http://colormind.io/api/';
-
-    //   (async () => {
-    //     const rawResponse = await fetch(url, {
-    //       method: 'POST',
-
-    //       body: JSON.stringify({
-    //         model: 'default',
-    //         input: scheme.color.map((element) => element.input),
-    //       }),
-    //     });
-    //     const content = await rawResponse.json();
-    //     const resScheme = content.result;
-    //     const newScheme = [];
-    //     for (const [index, value] of scheme.color.entries()) {
-    //       value.isToggled
-    //         ? (value.color = scheme.color[index].color)
-    //         : (value.color = resScheme[index]);
-    //       newScheme.push(value);
-    //     }
-
-    //     setScheme({
-    //       color: newScheme,
-    //     });
-    //   })();
   }
 
   document.addEventListener('keyup', (e) => {
