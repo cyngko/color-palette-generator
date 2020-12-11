@@ -3,12 +3,12 @@ import React from 'react';
 export default function ControllBar({ onGetScheme, mode }) {
   return (
     <div className='ControlBar'>
-      <button className='GenerateBtn' onClick={onGetScheme}>
-        Generate
-      </button>
       <p className='generateMessage'>
-        Hit the spacebar to start the generator!
+        Click the button or hit the spacebar to start the generator!
       </p>
+      <button className='GenerateBtn' onClick={onGetScheme}>
+        Generate new scheme
+      </button>
     </div>
   );
 }
