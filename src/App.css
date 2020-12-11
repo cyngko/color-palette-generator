@@ -98,6 +98,9 @@
   outline: none;
   cursor: pointer;
 }
+.CBIcon {
+  cursor: pointer;
+}
 .inputContainer {
   height: 30px;
   width: 30px;

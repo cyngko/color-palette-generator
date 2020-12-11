@@ -56,7 +56,7 @@ export default function PaletteBlock({
       strokeLinejoin='round'
       style={{ opacity: isLocked ? 1 : null }}
       onClick={() => onHandleLock(id)}
-      className={getContrastClass(color)}>
+      className={`CBIcon ${getContrastClass(color)}`}>
       <rect x='3' y='11' width='18' height='11' rx='2' ry='2'></rect>
       <path d='M7 11V7a5 5 0 0 1 10 0v4'></path>
     </svg>
@@ -72,7 +72,7 @@ export default function PaletteBlock({
       strokeLinecap='round'
       strokeLinejoin='round'
       onClick={() => onCopy(id)}
-      className={getContrastClass(color)}>
+      className={`CBIcon ${getContrastClass(color)}`}>
       <rect x='9' y='9' width='13' height='13' rx='2' ry='2'></rect>
       <path d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'></path>
     </svg>
@@ -108,7 +108,7 @@ export default function PaletteBlock({
       strokeLinejoin='round'
       style={{ display: position === 4 ? 'none' : null }}
       onClick={() => onMoveDown(position)}
-      className={getContrastClass(color)}>
+      className={`CBIcon ${getContrastClass(color)}`}>
       <polyline points='6 9 12 15 18 9'></polyline>
     </svg>
   );
@@ -124,7 +124,7 @@ export default function PaletteBlock({
       strokeLinejoin='round'
       style={{ display: position === 0 ? 'none' : null }}
       onClick={() => onMoveUp(position)}
-      className={getContrastClass(color)}>
+      className={`CBIcon ${getContrastClass(color)}`}>
       <polyline points='18 15 12 9 6 15'></polyline>
     </svg>
   );
